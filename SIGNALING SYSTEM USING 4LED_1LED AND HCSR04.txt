@@ -1,0 +1,46 @@
+int trig=13;
+int echo=12;
+int led=4;
+int led1=8;
+int led2=7;
+int led3=2;
+void setup() {
+Serial.begin(9600);
+pinMode(trig,OUTPUT);
+pinMode(echo,INPUT);
+pinMode(led,OUTPUT);
+pinMode(led1,OUTPUT);
+pinMode(led2,OUTPUT);
+pinMode(led3,OUTPUT);
+}
+void loop() {
+long distance,duration;
+digitalWrite(trig,HIGH);
+delayMicroseconds(1000);
+digitalWrite(trig,LOW);
+duration=pulseIn(echo,HIGH);
+distance=(duration/2)/29.1;
+Serial.print(distance);
+Serial.println("CM");
+delay(10);
+if(distance<=10)
+digitalWrite(led,HIGH);
+else
+if(distance>10)
+digitalWrite(led,LOW);
+if(distance>10 && distance<=50)
+digitalWrite(led1,HIGH);
+else
+if(distance>50)
+digitalWrite(led1,LOW);
+if(distance>50 && distance<=100)
+digitalWrite(led2,HIGH);
+else
+if(distance>100)
+digitalWrite(led2,LOW);
+if(distance>100 && distance<=150)
+digitalWrite(led3,HIGH);
+else
+if(distance>150)
+digitalWrite(led3,LOW);
+}
