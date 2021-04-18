@@ -1,0 +1,22 @@
+void setup()
+{
+pinMode(13, OUTPUT);
+pinMode(12, OUTPUT);
+}
+int i=1;
+void loop()
+{
+if(i%2==0)
+{
+digitalWrite(13,HIGH);
+digitalWrite(12,LOW);
+delay(3000);
+i++;
+}
+else
+{
+digitalWrite(12,HIGH);
+digitalWrite(13,LOW);
+delay(4000);
+i++;
+}
