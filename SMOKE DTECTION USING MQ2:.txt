@@ -1,0 +1,27 @@
+int smoke = A0;
+int buzzer = 4;
+int redled = 8;
+int greenled =7;
+void setup() {
+pinMode(smoke,INPUT);
+pinMode(greenled,OUTPUT);
+pinMode(redled,OUTPUT);
+pinMode(buzzer,OUTPUT);
+Serial.begin(9600);
+}
+void loop() {
+int thres = 200;
+int smokeReg = analogRead(smoke);
+Serial.print("Smoke : ");
+Serial.println(smokeReg);
+if(smokeReg>thres){
+digitalWrite(redled,HIGH);
+digitalWrite(greenled,LOW);
+tone(buzzer,1000,10000);
+}
+else{
+digitalWrite(redled,LOW);
+digitalWrite(greenled,HIGH);
+noTone(buzzer);
+}
+}
